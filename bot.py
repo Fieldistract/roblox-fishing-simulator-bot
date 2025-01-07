@@ -16,6 +16,7 @@ from utils.imitate import (
     leftClick,
     random_click,
     random_double_click,
+    update_global_variables,
 )
 from utils.BubbleDetector import BubbleDetector
 from utils.Presetter import Presetter

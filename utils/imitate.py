@@ -39,3 +39,17 @@ def random_double_click(clickCoords):
     random_click(clickCoords)  # Perform the first random click
     time.sleep(random.uniform(0.02, 0.025))  # Add a short delay
     random_click(clickCoords)  # Perform the second random click
+
+def update_global_variables(preset):
+        global monitorFishingPixel, throw_line_coords, bagFullTextCords
+        global sellButtonCords, sellEverthingCords
+
+        # Assuming 'preset' is a dictionary with keys like 'monitorFishingPixel', 'throw_line_coords', etc.
+        monitorFishingPixel = preset.get('monitorFishingPixel', monitorFishingPixel)
+        throw_line_coords = preset.get('throw_line_coords', throw_line_coords)
+        bagFullTextCords = preset.get('bagFullTextCords', bagFullTextCords)
+        sellButtonCords = preset.get('sellButtonCords', sellButtonCords)
+        sellEverthingCords = preset.get('sellEverthingCords', sellEverthingCords)
+
+        # After setting the values, you can directly use the global variables as updated.
+
