@@ -11,7 +11,7 @@ class Presetter:
                 "bagFullTextCords": (1163, 937),
             },
             "1920x1080": {
-                "monitorFishingPixel": (965, 785),
+                "monitorFishingPixel": (935, 780),
                 "sellButtonCords": (1078, 323),
                 "sellEverythingCords": (1210, 447),
                 "bagFullTextCords": (878, 697),
