@@ -18,7 +18,7 @@ from utils.imitate import (
     random_double_click,
 )
 from utils.BubbleDetector import BubbleDetector
-
+from utils.Presetter import Presetter
 # KC info
 # monitorFishingPixel = 891, 877
 # mouseClickCords = (971, 426)
@@ -30,16 +30,18 @@ from utils.BubbleDetector import BubbleDetector
 # sellButtonCords = (1433, 433)
 # sellEverthingCords = (1710, 580)
 # bagFullTextCords = (1163, 937)
+
 fishingGaugeColor = (255, 255, 255)  # WHITE
 fishingMeterColor = (83, 250, 83)  # GREEN
 bagFullTextColor = (253, 0, 97)  # RED
 bubbleColor = (68, 252, 234)  # Define the RGB color code for air bubbles
-monitorFishingPixel = 1330, 1318
-throw_line_coords = (1490, 808)  # Coords of where the player throws fishing line.
-bagFullTextCords = (1590, 1160)
 
-sellButtonCords = (1648, 538)
-sellEverthingCords = (1900, 730)
+monitorFishingPixel = 965, 785
+throw_line_coords = (960, 390)  # Coords of where the player throws fishing line.
+bagFullTextCords = (878, 697)
+
+sellButtonCords = (1078, 323)
+sellEverthingCords = (1210, 447)
 
 sellGamepass = True  # CHANGE TO FALSE IF NO SELL GAMEPASS
 
@@ -73,7 +75,7 @@ def initFetchCords():
 
 # Function to retrieve a counter value for controlling loop iterations
 def get_counter():
-    counter = 18  # Set the counter to a predefined value
+    counter = 21  # Set the counter to a predefined value
     return counter  # Return the counter value
 
 
@@ -130,6 +132,8 @@ def fishingBarCheck():
 def main():
     # Initialize counters and flags
     bubble_detector = BubbleDetector()
+    manager = Presetter()
+    Preset = manager.check_files()
     counter = 0  # General counter for loop control
     fish_counter = 0  # Counter to track the number of fish caught
     fish_found = False  # Flag to indicate if a fish is currently detected
@@ -164,8 +168,8 @@ def main():
                 )  # Log the number of fish caught
                 fish_found = False  # Reset the fish detection flag
                 print("RECASTING...")
-                time.sleep(0.2)
-                random_double_click(
+                time.sleep(0.40)
+                random_click(
                     throw_line_coords
                 )  # Perform a double random throw to reset the fishing rod
 
@@ -176,6 +180,9 @@ def main():
                 random_click(
                     throw_line_coords
                 )  # Perform a random click to reel in the fish
+                random_click(
+                    throw_line_coords
+                )  # Perform a random click to reel in the fish
                 counter = get_counter()  # Reset the counter
                 fish_found = True  # Set the flag indicating a fish is found
 
@@ -183,10 +190,8 @@ def main():
         print("Waiting for Bubbles. Recasting in: ", counter)
         if counter == 0:
             reEquipRod()
-            time.sleep(0.5)
-            random_double_click(
-                throw_line_coords
-            )  # Perform a double random throw to reset the fishing rod
+            time.sleep(2)
+            random_click(throw_line_coords)
             counter = get_counter()  # Reset the counter
 
         # If the inventory is full, sell fish
@@ -204,5 +209,5 @@ def main():
 
 
 if __name__ == "__main__":
-    initFetchCords()
+    # initFetchCords()
     main()
