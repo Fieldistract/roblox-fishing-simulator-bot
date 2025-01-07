@@ -1,4 +1,4 @@
-class DirectoryPresetManager:
+class Presetter:
     def __init__(self, directory_file="Directory.txt", preset_file="preset.txt"):
         self.directory_file = directory_file
         self.preset_file = preset_file
@@ -82,33 +82,17 @@ class DirectoryPresetManager:
                 self.directory_path = file.read().strip()
                 print(f"Directory already exists: {self.directory_path}")
         except FileNotFoundError:
-            self.create_directory_file()
+            self.create_directory()
 
         # Check if the preset file exists
         preset = self.read_preset()
         if preset:
             print("Preset already exists.")
-            self.update_global_variables(preset)
-            return preset
+            return self.presets[preset]
         else:
             print("No preset found. Prompting for preset...")
-            preset, config = self.choose_preset()
-            self.write_preset(preset)
-            self.update_global_variables(preset)
-            return config
-    def update_global_variables(preset):
-        global monitorFishingPixel, throw_line_coords, bagFullTextCords
-        global sellButtonCords, sellEverthingCords
-
-        # Assuming 'preset' is a dictionary with keys like 'monitorFishingPixel', 'throw_line_coords', etc.
-        monitorFishingPixel = preset.get('monitorFishingPixel', monitorFishingPixel)
-        throw_line_coords = preset.get('throw_line_coords', throw_line_coords)
-        bagFullTextCords = preset.get('bagFullTextCords', bagFullTextCords)
-        sellButtonCords = preset.get('sellButtonCords', sellButtonCords)
-        sellEverthingCords = preset.get('sellEverthingCords', sellEverthingCords)
-
-        # After setting the values, you can directly use the global variables as updated.
-
+            preset_config = self.preset_chooser()
+            return preset_config
 
             
 
