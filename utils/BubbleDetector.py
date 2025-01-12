@@ -9,6 +9,9 @@ class BubbleDetector:
 
     def check_air_bubbles_on_screen(self):
         """Check for air bubbles with cooldown to prevent multiple detections"""
+        bubblecolor1 = (68, 252, 234)
+        bubblecolorlava = (68, 252, 234)
+        bubblecolorvoid = (68, 252, 234)
         current_time = time.time()
         if current_time - self.last_detection_time < self.detection_cooldown:
             return False

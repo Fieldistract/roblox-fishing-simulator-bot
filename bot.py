@@ -20,17 +20,6 @@ from utils.imitate import (
 )
 from utils.BubbleDetector import BubbleDetector
 from utils.Presetter import Presetter
-# KC info
-# monitorFishingPixel = 891, 877
-# mouseClickCords = (971, 426)
-# bagFullTextCords = (1055, 771)
-# sellButtonCords = (1084, 356)
-# sellEverthingCords = (1211, 492)
-# KB info
-# monitorFishingPixel = 1185, 1065
-# sellButtonCords = (1433, 433)
-# sellEverthingCords = (1710, 580)
-# bagFullTextCords = (1163, 937)
 
 fishingGaugeColor = (255, 255, 255)  # WHITE
 fishingMeterColor = (83, 250, 83)  # GREEN
@@ -147,6 +136,7 @@ def main():
     counter = 0  # General counter for loop control
     fish_counter = 0  # Counter to track the number of fish caught
     fish_found = False  # Flag to indicate if a fish is currently detected
+    userbubble = int(input("1. Normal Bubbles 2. Lava/red Bubbles 3. Void Bubbles"))
 
     # Main loop that continues until the 'q' key is pressed
     while keyboard.is_pressed("q") == False:
